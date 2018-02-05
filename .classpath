@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_161">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v8.5">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.web"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/Users/thoco/Desktop/workbase/AdminController/WebContent/lib/asm-3.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/thoco/Desktop/workbase/AdminController/WebContent/lib/asm-commons-3.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/thoco/Desktop/workbase/AdminController/WebContent/lib/asm-tree-3.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/thoco/Desktop/workbase/AdminController/WebContent/lib/com.mysql.jdbc_5.1.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/thoco/Desktop/workbase/AdminController/WebContent/lib/commons-fileupload-1.2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/thoco/Desktop/workbase/AdminController/WebContent/lib/commons-io-2.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/thoco/Desktop/workbase/AdminController/WebContent/lib/commons-lang-2.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/thoco/Desktop/workbase/AdminController/WebContent/lib/freemarker-2.3.18.jar"/>
+	<classpathentry kind="lib" path="C:/Users/thoco/Desktop/workbase/AdminController/WebContent/lib/javassist-3.11.0.GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/thoco/Desktop/workbase/AdminController/WebContent/lib/ognl-3.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/thoco/Desktop/workbase/AdminController/WebContent/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/thoco/Desktop/workbase/AdminController/WebContent/lib/struts2-core-2.3.1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/thoco/Desktop/workbase/AdminController/WebContent/lib/xwork-core-2.3.1.2.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>
