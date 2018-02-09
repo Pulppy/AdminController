@@ -32,25 +32,29 @@ public class TemplateFunction {
 	 * Describe : Generate ID 
 	 * Return: String ID
 	 */
-	public static boolean checkDuplicateID(String Id) throws ClassNotFoundException, SQLException {
+	public static boolean checkDuplicateID(String Id, String Object) throws ClassNotFoundException, SQLException {
 		if (!Id.equals(null) || Id.equals("")) {
-			String query = "Select * from Account Where id=? ";
-			MySQLConnUtils sqlconn = new MySQLConnUtils();
-			Connection conn = sqlconn.getMySQLConnection();
-			PreparedStatement pstm = conn.prepareStatement(query);
-			pstm.setString(1, Id);
-			ResultSet rs = pstm.executeQuery();
-			if (rs.next()) {
-				System.out.println("Trung ID");
-				conn.close();
-				pstm.close();
-				return true;
-			} else {
-				System.out.println("Ko co ID Trung");
-				conn.close();
-				pstm.close();
-				return false;
+			if (Object != null || !Object.equals("")) {
+				System.out.println("Object " + Object);
+				String query = "Select * from " + Object + " Where id=? ";
+				MySQLConnUtils sqlconn = new MySQLConnUtils();
+				Connection conn = sqlconn.getMySQLConnection();
+				PreparedStatement pstm = conn.prepareStatement(query);
+				pstm.setString(1, Id);
+				ResultSet rs = pstm.executeQuery();
+				if (rs.next()) {
+					System.out.println("Trung ID");
+					conn.close();
+					pstm.close();
+					return true;
+				} else {
+					System.out.println("Ko co ID Trung");
+					conn.close();
+					pstm.close();
+					return false;
+				}
 			}
+
 		}
 		return true;
 	}

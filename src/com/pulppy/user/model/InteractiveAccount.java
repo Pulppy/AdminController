@@ -45,7 +45,7 @@ public class InteractiveAccount {
 				|| !password.equals("") && !email.equals(null) || !email.equals("")) {
 			// Query Duplicate ID
 			String idGenerate = TemplateFunction.generateRandom();
-			if (TemplateFunction.checkDuplicateID(idGenerate) == false) {
+			if (TemplateFunction.checkDuplicateID(idGenerate,"Account") == false) {
 				String sql = "Insert into Account(id, username, email,passwords) values(?,?,?,?)";
 				MySQLConnUtils sqlconn = new MySQLConnUtils();
 				Connection conn = sqlconn.getMySQLConnection();
