@@ -1,6 +1,9 @@
 package com.pulppy.user.actionTest;
 
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -67,6 +70,10 @@ public class TestFunction {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
+		
+		/* DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date)); */
 	}
 
 }

@@ -2,7 +2,10 @@ package com.pulppy.user.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.pulppy.user.bean.MusicDTO;
 import com.pulppy.user.connection.MySQLConnUtils;
@@ -78,5 +81,37 @@ public class InteractiveMusic {
 		pstm.close();
 
 		return false;
+	}
+	
+	public List<MusicDTO> getMusic(Integer offset) throws ClassNotFoundException, SQLException{
+		List<MusicDTO> listMusic = new ArrayList<MusicDTO>();  
+		String sql = "Select * from Music ";
+		
+		MySQLConnUtils sqlconn = new MySQLConnUtils();
+		Connection conn = sqlconn.getMySQLConnection();
+		PreparedStatement pstm = conn.prepareStatement(sql);
+		ResultSet rs = pstm.executeQuery();
+		
+		while(rs.next()){
+			MusicDTO dto = new MusicDTO();
+			dto.setMusicName(rs.getString("musicName"));
+			dto.setMusicID(rs.getString("id"));	
+			listMusic.add(dto);
+		}
+		
+		return listMusic;
+	}
+	public static void main(String[] args) {
+		InteractiveMusic a = new InteractiveMusic();
+		try {
+			List<MusicDTO> listMusic = new ArrayList<MusicDTO>();  
+			listMusic = a.getMusic(0);
+			for (MusicDTO musicDTO : listMusic) {
+				System.out.println(musicDTO.getMusicName());
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
