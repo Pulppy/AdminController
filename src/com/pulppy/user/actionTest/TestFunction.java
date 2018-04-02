@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -20,9 +21,12 @@ public class TestFunction {
 		InteractiveProduct a = new InteractiveProduct();
 
 		ProductDTO dto = ProductDATA.setProductDTO();
-		// a.createProduct(dto);
-		a.updateProduct(dto);
-
+		 // a.createProduct(dto);
+		 // a.updateProduct(dto);
+		List<ProductDTO> lstProduct = a.queryProduct();
+		for (ProductDTO productDTO : lstProduct) {
+			System.out.println(productDTO.getProductName() + "\n" + productDTO.getProductBrand());
+		}
 	}
 
 }

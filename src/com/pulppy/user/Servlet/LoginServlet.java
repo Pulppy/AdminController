@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.pulppy.user.bean.MusicDTO;
+import com.pulppy.user.bean.ProductDTO;
 import com.pulppy.user.model.InteractiveMusic;
+import com.pulppy.user.model.InteractiveProduct;
 
 /**
  * Servlet implementation class LoginServlet
@@ -38,6 +40,18 @@ public class LoginServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String pass = request.getParameter("pass");
 		if(!name.isEmpty() && !pass.isEmpty()){
+			List<ProductDTO> lstProduct = null;
+			try {
+				lstProduct = InteractiveProduct.queryProduct();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.setAttribute("productList", lstProduct);
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("WebPage/Index.jsp");
 			dispatcher.forward( request, response );			
 		}else{

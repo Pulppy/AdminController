@@ -26,8 +26,9 @@
 				    <div class="col">
 				    </div>
 				</div>
-		  		
-				
+			</form>
+			<form action="ProductList" method="post">
+				<input type="submit" value="Go To Index" class="btn btn-primary">
 			</form>
 		</div>
 	</div>

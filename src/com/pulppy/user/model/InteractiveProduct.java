@@ -2,11 +2,14 @@ package com.pulppy.user.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.pulppy.user.bean.ProductDTO;
 import com.pulppy.user.connection.MySQLConnUtils;
@@ -42,8 +45,8 @@ public class InteractiveProduct {
 			String idGenerate = TemplateFunction.generateRandom();
 			if (TemplateFunction.checkDuplicateID(idGenerate, "pProduct") == false) {
 				String sql = "Insert into pProduct(id, productName, productImage, productCatelogy, productStore,"
-						+ " productPriceDefault, productBrand, productShortDecription, productAmount, productEventStatus, productRate"
-						+ ") values(?,?,?,?,?,?,?,?,?,?,?)";
+						+ " productPriceDefault, productBrand, productShortDecription, productAmount, productEventStatus, productRate, productActive"
+						+ ") values(?,?,?,?,?,?,?,?,?,?,?,?)";
 				MySQLConnUtils sqlconn = new MySQLConnUtils();
 				Connection conn = sqlconn.getMySQLConnection();
 				PreparedStatement pstm = conn.prepareStatement(sql);
@@ -58,7 +61,7 @@ public class InteractiveProduct {
 				pstm.setInt(9, product.getProductAmount());
 				pstm.setBoolean(10, product.isProductEventStatus());
 				pstm.setInt(11, product.getProductRate());
-
+				pstm.setBoolean(12, product.isProductActive());
 				pstm.executeUpdate();
 				conn.close();
 				pstm.close();
@@ -128,5 +131,62 @@ public class InteractiveProduct {
 		System.out.println("Choose Product");
 		return false;
 	}
+	
+	public static List<ProductDTO> queryProduct() throws SQLException, ClassNotFoundException {
+        
+		String sql = "Select * from pProduct";
+		 
+		MySQLConnUtils sqlconn = new MySQLConnUtils();
+		Connection conn = sqlconn.getMySQLConnection();
+		PreparedStatement pstm = conn.prepareStatement(sql);
+ 
+        ResultSet rs = pstm.executeQuery();
+        List<ProductDTO> list = new ArrayList<ProductDTO>();
+        while (rs.next()) {
+//            String id = rs.getString("id");
+            String productName = rs.getString("productName");
+            String productImage = rs.getString("productImage");
+            String productCatelogy = rs.getString("productCatelogy");
+            String productStore = rs.getString("productStore");
+            Integer productPriceDefault = rs.getInt("productPriceDefault");
+            String productBrand = rs.getString("productBrand");
+            String productShortDecription = rs.getString("productShortDecription");
+            String productDecription = rs.getString("productDecription");
+            Integer productAmount = rs.getInt("productAmount");
+            String productCustomer = rs.getString("productCustomer");
+            boolean productEventStatus = rs.getBoolean("productEventStatus");
+            String productEventStart = rs.getString("productEventStart");
+            String productEventEnd = rs.getString("productEventEnd");
+            Integer productPriceEvent = rs.getInt("productPriceEvent");
+            String productDetailDecription = rs.getString("productDetailDecription");
+            String productComment = rs.getString("productComment");
+            Integer productRate = rs.getInt("productRate");
+            boolean productActive = rs.getBoolean("productActive");
+            
+            ProductDTO dto = new ProductDTO();
+//            dto.setProductID(id);
+    		dto.setProductName(productName);
+    		dto.setProductImage(productImage);
+    		dto.setProductCatelogy(productCatelogy);
+    		dto.setProductStore(productStore);
+    		dto.setProductPriceDefault(productPriceDefault);
+    		dto.setProductBrand(productBrand);
+    		dto.setProductShortDecription(productShortDecription);
+    		dto.setProductDecription(productDecription);
+    		dto.setProductAmount(productAmount);
+    		dto.setProductCustomer(productCustomer);
+    		
+    		dto.setProductEventStatus(productEventStatus);
+    		dto.setProductRate(productRate);
+    		dto.setProductEventStatus(productEventStatus);
+    		dto.setProductPriceEvent(productPriceEvent);
+    		dto.setProductEventStart(productEventStart);
+    		dto.setProductEventEnd(productEventEnd);
+    		dto.setProductActive(true);
+    		
+            list.add(dto);
+        }
+        return list;
+    }
 	
 }

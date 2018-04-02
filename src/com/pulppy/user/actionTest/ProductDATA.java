@@ -26,7 +26,7 @@ public class ProductDATA {
 		dto.setProductEventStart("12/02/2012");
 		dto.setProductEventEnd("13/02/2012");
 		dto.setProductID("4XGPDMGR23O4ZEQUJ");
-		
+		dto.setProductActive(true);
 		return dto;
 	}
 }

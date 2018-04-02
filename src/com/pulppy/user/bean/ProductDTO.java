@@ -21,12 +21,13 @@ public class ProductDTO {
 	private String productEventEnd;
 	private int productPriceEvent;
 	private int productRate;
-	
+	private boolean productActive;
+
 	public ProductDTO(String productID, String productName, String productImage, String productCatelogy,
 			String productStore, int productPriceDefault, String productBrand, String productShortDecription,
 			String productDecription, int productAmount, String productCustomer, String productDetailDecription,
 			String productComment, boolean productEventStatus, String productEventStart, String productEventEnd,
-			int productPriceEvent, int productRate) {
+			int productPriceEvent, int productRate, boolean productActive) {
 		super();
 		this.productID = productID;
 		this.productName = productName;
@@ -46,6 +47,7 @@ public class ProductDTO {
 		this.productEventEnd = productEventEnd;
 		this.productPriceEvent = productPriceEvent;
 		this.productRate = productRate;
+		this.productActive = productActive;
 	}
 
 	public ProductDTO() {
@@ -92,8 +94,6 @@ public class ProductDTO {
 	public void setProductStore(String productStore) {
 		this.productStore = productStore;
 	}
-
-
 
 	public int getProductPriceDefault() {
 		return productPriceDefault;
@@ -198,9 +198,13 @@ public class ProductDTO {
 	public void setProductRate(int productRate) {
 		this.productRate = productRate;
 	}
-	
-	
-	
-	
-	
+
+	public boolean isProductActive() {
+		return productActive;
+	}
+
+	public void setProductActive(boolean productActive) {
+		this.productActive = productActive;
+	}
+
 }
